@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
+import time
+import scrapy
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
@@ -13,8 +15,8 @@ class GetimagesPipeline(object):
         image = requests.get(image_url)
 
         print(imagename)
-
-        with open("/home/zhouyu/PlateImages/" + imagename, 'wb') as f:
+        # time.sleep(1)
+        with open("/Users/zhouyu/PlateImages/" + imagename, 'wb') as f:
             f.write(image.content)
 
         return item

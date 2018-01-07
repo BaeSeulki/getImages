@@ -28,7 +28,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+# DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -53,10 +53,17 @@ COOKIES_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'getImages.middlewares.GetimagesDownloaderMiddleware': 543,
-#    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-# }
+DOWNLOADER_MIDDLEWARES = {
+    'getImages.middlewares.UserAgent': 100,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 110,
+    'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware': 120,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 130,
+    # 'getImages.middlewares.IPProxy': 140,
+    'getImages.middlewares.ProxyMiddleWare': 140,
+    # 'getImages..HttpProxyMiddleware.HttpProxyMiddleware': 140,
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 150,
+
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -90,3 +97,5 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+DOWNLOAD_TIMEOUT = 10
