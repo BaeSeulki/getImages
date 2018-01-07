@@ -3,3 +3,8 @@
 1. 图像下载，用标签命名
 2. 反爬措施，IP代理和用户代理，禁用cookies，禁用robot协议
 3. 定时爬取无历史的实时更新网站
+
+环境依赖：
+python3.6
+scrapy1.5
+requests
