@@ -15,7 +15,7 @@ class GetimagesPipeline(object):
         image = requests.get(image_url)
 
         print(imagename)
-        # time.sleep(1)
+        time.sleep(1)
         save_path = "/Users/zhouyu/PlateImages/"
         with open(save_path + imagename, 'wb') as f:
             f.write(image.content)

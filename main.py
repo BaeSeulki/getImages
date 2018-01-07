@@ -7,6 +7,7 @@ import datetime
 def run(flag):
     j = 0
     # 获取可用的IP代理，保存在proxy.txt中
+    print("获取可用的IP代理...")
     os.system("python3 getImages/fetch_free_proxies.py")
     while True:
         # 每90秒执行一次爬虫
@@ -17,8 +18,8 @@ def run(flag):
             i = 3600
             j = i
         os.system("scrapy crawl oinbag")
+        print("waiting......当前更新频率为%s秒" % i)
         time.sleep(i)
-        print("waiting......")
         if j == 3600:
             # 每小时更新一次IP代理列表
             os.system("python3 getImages/fetch_free_proxies.py")
