@@ -9,7 +9,7 @@ def refresh_to_run(night, k):
     old = ""
     j = 0
     print("获取可用的IP代理...")
-    # os.system("python3 getImages/fetch_free_proxies.py")
+    os.system("python3 getImages/fetch_free_proxies.py")
     while True:
         if night:
             k = 15*k

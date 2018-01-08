@@ -8,8 +8,8 @@ logger = logging.getLogger(__name__)
 
 
 def get_html(url):
-    request = urllib.request.Request(url)
-    request.add_header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1")
+    request_url = urllib.request.Request(url)
+    request_url.add_header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1")
     html = urllib.request.urlopen(request)
     return html.read().decode('utf-8')
 

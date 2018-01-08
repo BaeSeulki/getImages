@@ -32,7 +32,3 @@ def refresh(old_content):
         flag = True
     return old_content, flag
 
-
-if __name__ == '__main__':
-    content, f = refresh("")
-    print(refresh(content))
