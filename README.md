@@ -8,7 +8,7 @@
 python3.6  
 scrapy1.4/1.5    
 requests 2.18.4   
-bs4 (BeautifulSoup) 0.01     
+bs4 (BeautifulSoup) 0.01       
 pillow 5.0.0
 
 ## 说明：  
