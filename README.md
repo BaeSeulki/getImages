@@ -7,7 +7,7 @@
 ## 环境依赖：
 python3.6  
 scrapy1.5    
-requests 2.18.4 
+requests 2.18.4   
 pillow 5.0.0  
 twisted 17.90  
 bs4 (BeautifulSoup) 0.01       
