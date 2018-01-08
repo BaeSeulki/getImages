@@ -5,7 +5,11 @@
 3. 定时爬取无历史的实时更新网站
 
 ## 环境依赖：
-python3.6/ scrapy1.5/ requests  
+python3.6  
+scrapy1.4/1.5    
+requests 2.18.4   
+bs4 0.01 （BeautifulSoup ） 
+pillow 5.0.0
 
 ## 说明：  
 pipelines.py 中设置保存图像的文件夹地址save_path  
