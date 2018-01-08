@@ -2,15 +2,40 @@
 import time
 import os
 import datetime
+from getImages import crawl_oinbag
 
 
-def run(flag, k):
+def refresh_to_run(night, k):
+    old = ""
+    j = 0
+    print("获取可用的IP代理...")
+    # os.system("python3 getImages/fetch_free_proxies.py")
+    while True:
+        if night:
+            k = 15*k
+        new, flag = crawl_oinbag.refresh(old)
+        old = new  # 不管有没有更新都要重新赋值
+        if flag:
+            print("有图片更新，开始爬虫程序...")
+            os.system("scrapy crawl oinbag")
+            print("爬取完毕，等待下次轮询...")
+        else:
+            print("没有图片更新，等待下次轮询...")
+        time.sleep(k)
+        j = j + k
+        if j >= 3600:
+            # 每小时更新一次IP代理列表
+            os.system("python3 getImages/fetch_free_proxies.py")
+            j = 0
+
+
+def time_to_run(night, k):
     j = 0
     # 获取可用的IP代理，保存在proxy.txt中
     print("获取可用的IP代理...")
-    os.system("python3 getImages/fetch_free_proxies.py")
+    # os.system("python3 getImages/fetch_free_proxies.py")
     while True:
-        if flag:
+        if night:
             i = k
             j = j + i
         else:
@@ -26,6 +51,7 @@ def run(flag, k):
 
 
 def night():
+    """判断时间段"""
     now = datetime.datetime.now()
     time = now.strftime('%Y-%m-%d %H:%M:%S')
     hour = time.strip().split(' ')[1].split(':')[0]
@@ -37,6 +63,7 @@ def night():
 
 
 if __name__ == '__main__':
-    k = 90   # 设置更新频率s
-    a = night()
-    run(a, k)
+    slot = 120   # 设置轮询频率
+    night_flag = night()
+    # time_to_run(night_flag, slot)
+    refresh_to_run(night_flag, slot)
