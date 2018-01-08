@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
-import os
+import os, sys
 import datetime
 from getImages import crawl_oinbag
 
@@ -9,10 +9,10 @@ def refresh_to_run(peak_flag, k):
     old = ""
     j = 0
     print("获取可用的IP代理...")
-    os.system("python3 getImages/fetch_free_proxies.py")
+    # os.system("python3 getImages/fetch_free_proxies.py")
     while True:
         if not peak_flag:
-            k = 15*k
+            k = 1800
         print("开始轮询...")
         new, flag = crawl_oinbag.refresh(old)
         old = new  # 不管有没有更新都要重新赋值
@@ -22,7 +22,9 @@ def refresh_to_run(peak_flag, k):
             print("爬取完毕，等待%d秒开始下次轮询..." % k)
         else:
             print("没有图片更新，等待%d秒下次轮询..." % k)
-        time.sleep(k)
+        for i in range(k):
+            time.sleep(1)
+            print(k)
         j = j + k
         if j >= 3600:
             # 每小时更新一次IP代理列表
