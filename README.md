@@ -6,10 +6,12 @@
 
 ## 环境依赖：
 python3.6  
-scrapy1.4/1.5    
-requests 2.18.4   
-bs4 (BeautifulSoup) 0.01       
-pillow 5.0.0
+scrapy1.5    
+requests 2.18.4 
+pillow 5.0.0  
+twisted 17.90  
+bs4 (BeautifulSoup) 0.01       
+
 
 ## 说明：  
 pipelines.py 中设置保存图像的文件夹地址save_path  
