@@ -15,7 +15,7 @@ bs4 (BeautifulSoup) 0.01       
 
 ## 说明：  
 pipelines.py 中设置保存图像的文件夹地址save_path  
-main.py 中设置爬取间隔，默认为0-8点2小时一次，8点-24点90s一次。  
+main.py 中设置爬取间隔，默认为0-8点1800s一次，8点-24点120s一次。  
 
 ## shell执行命令：  
 `python3 main.py`    
